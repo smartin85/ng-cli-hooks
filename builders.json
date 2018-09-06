@@ -1,0 +1,24 @@
+{
+	"builders": {
+		"browser": {
+			"class": "./dist/browser",
+			"schema": "./dist/browser/schema.json",
+			"description": "Build a browser app."
+		},
+		"dev-server": {
+			"class": "./dist/dev-server",
+			"schema": "./dist/dev-server/schema.json",
+			"description": "Serve a browser app."
+		},
+		"extract-i18n": {
+			"class": "./dist/extract-i18n",
+			"schema": "./dist/extract-i18n/schema.json",
+			"description": "Extract i18n strings from a browser app."
+		},
+		"server": {
+			"class": "./dist/server",
+			"schema": "./dist/server/schema.json",
+			"description": "Build a server Angular application."
+		}
+	}
+}

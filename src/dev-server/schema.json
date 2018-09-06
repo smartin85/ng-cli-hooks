@@ -1,0 +1,12 @@
+{	
+	"properties": {
+		"webpackHook": {
+			"type": "string",
+			"description": "Enables overriding or replacement of the original angular webpack config."
+		},
+		"optionsHook": {
+			"type": "string",
+			"description": "Enables manipulation of the options."
+		}
+	}
+}
