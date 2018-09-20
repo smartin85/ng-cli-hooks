@@ -19,6 +19,11 @@
 			"class": "./dist/server",
 			"schema": "./dist/server/schema.json",
 			"description": "Build a server Angular application."
+		},
+		"cordova-build": {
+			"class": "./dist/cordova-build",
+			"schema": "./dist/cordova-build/schema.json",
+			"description": "Build an Ionic Cordova application."
 		}
 	}
 }

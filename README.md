@@ -82,6 +82,13 @@ module.exports = function (generatedWebpackConfig, options) {
 #### Replace the generated webpack-config
 If `hooks/webpack.js` exports a webpack-config-object, than the generated webpack-config will be replaced by your own.
 
+## Ionic 4
+The ionic-cli uses hardcoded the `BrowserBuilder` from Angular for the `cordova-build`. This made it impossible to use `ng-cli-hooks` for the cordova-build. To force Ionic to use `ng-cli-hooks` we can replace `@ionic/ng-toolkit:cordova-build` with `ng-cli-hooks:cordova-build` in the `angular.json` file.
+
+## Changelog
+### 1.1.0
+- added `ng-cli-hooks:cordova-build` for Ionic 4 projects.
+
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
 
