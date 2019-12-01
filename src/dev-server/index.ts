@@ -1,9 +1,9 @@
 import { DevServerBuilder as Original, DevServerBuilderOptions } from '@angular-devkit/build-angular/src/dev-server';
-import { BrowserBuilderSchema } from '@angular-devkit/build-angular/src/browser/schema';
+import {NormalizedBrowserBuilderSchema} from '@angular-devkit/build-angular/src/browser/schema';
 import { Path, resolve, getSystemPath, normalize } from '@angular-devkit/core';
-import { BuilderContext, BuilderConfiguration } from '@angular-devkit/architect';
+import { BuilderContext } from '@angular-devkit/architect';
 
-export interface ExtendedBrowserBuilderSchema extends BrowserBuilderSchema {
+export interface ExtendedBrowserBuilderSchema extends NormalizedBrowserBuilderSchema {
 	webpackHook: string;
 	optionsHook: string;
 }
