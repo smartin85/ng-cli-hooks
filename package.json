@@ -5,8 +5,9 @@
   "builders": "builders.json",
   "description": "Hooks for the Angular CLI",
   "scripts": {
-    "build": "tsc && node build.js",
+    "build": "tsc && node create-schemas.js",
     "prepare": "npm run build",
+    "install": "node create-schemas.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,8 +33,15 @@
     "@angular-devkit/core": "^7.2.4",
     "@ionic/angular-toolkit": "^1.4.1",
     "@types/node": "^10.9.3",
-    "fs-extra": "^7.0.0",
-    "lodash": "^4.17.15",
     "typescript": "^3.0.1"
-  }
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
+  "files": [
+    "dist",
+    "create-schemas.js",
+    "builders.json",
+    "src/**/schema.json"
+  ]
 }
