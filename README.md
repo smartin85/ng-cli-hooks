@@ -86,6 +86,9 @@ If `hooks/webpack.js` exports a webpack-config-object, than the generated webpac
 The ionic-cli uses hardcoded the `BrowserBuilder` from Angular for the `cordova-build`. This made it impossible to use `ng-cli-hooks` for the cordova-build. To force Ionic to use `ng-cli-hooks` we can replace `@ionic/ng-toolkit:cordova-build` with `ng-cli-hooks:cordova-build` in the `angular.json` file.
 
 ## Changelog
+### 7.0.0
+- Major version of ng-cli-hooks now equals the Angular version (use ng-cli-hooks@7.x.x to work with Angular 7.x.x)
+
 ### 1.1.0
 - added `ng-cli-hooks:cordova-build` for Ionic 4 projects.
 
