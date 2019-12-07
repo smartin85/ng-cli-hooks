@@ -26,12 +26,6 @@
     "url": "https://github.com/smartin85/ng-cli-hooks/issues"
   },
   "homepage": "https://github.com/smartin85/ng-cli-hooks#readme",
-  "peerDependencies": {
-    "@angular-devkit/architect": "^0.12.4",
-    "@angular-devkit/build-angular": "^0.12.4",
-    "@angular-devkit/core": "^7.2.4",
-    "@ionic/angular-toolkit": "^1.4.1"
-  },
   "devDependencies": {
     "@angular-devkit/architect": "^0.12.4",
     "@angular-devkit/build-angular": "^0.12.4",
