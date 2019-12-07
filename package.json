@@ -1,13 +1,13 @@
 {
   "name": "ng-cli-hooks",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "main": "dist",
   "builders": "builders.json",
   "description": "Hooks for the Angular CLI",
   "scripts": {
     "build": "tsc && node create-schemas.js",
-    "prepare": "npm run build",
-    "install": "node create-schemas.js",
+    "xxprepare": "npm run build",
+    "xxinstall": "node create-schemas.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +18,10 @@
     "ng",
     "angular",
     "cli",
+    "angular-cli",
+    "builder",
+    "webpack",
+    "options",
     "hook",
     "hooks"
   ],
@@ -28,15 +32,16 @@
   },
   "homepage": "https://github.com/smartin85/ng-cli-hooks#readme",
   "devDependencies": {
-    "@angular-devkit/architect": "^0.12.4",
-    "@angular-devkit/build-angular": "^0.12.4",
-    "@angular-devkit/core": "^7.2.4",
-    "@ionic/angular-toolkit": "^1.4.1",
+    "@angular-devkit/build-angular": ">=0.801.0",
+    "@ionic/angular-toolkit": "^2.1.1",
     "@types/node": "^10.9.3",
-    "typescript": "^3.0.1"
+    "typescript": "^3.6.4"
   },
   "dependencies": {
     "lodash": "^4.17.15"
+  },
+  "peerDependencies": {
+    "@angular-devkit/build-angular": ">=0.801.0"
   },
   "files": [
     "dist",

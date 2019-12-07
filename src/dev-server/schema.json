@@ -7,6 +7,10 @@
 		"optionsHook": {
 			"type": "string",
 			"description": "Enables manipulation of the options."
+		},
+		"indexHtmlHook": {
+			"type": "string",
+			"description": "Enables manipulation of the index.html."
 		}
 	}
 }

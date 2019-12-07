@@ -5,7 +5,6 @@ var rootPath = process.cwd();
 	angularSchemas = [
 		'browser',
 		'dev-server',
-		'extract-i18n',
 		'server'
 	],
 	ionicSchemas = [

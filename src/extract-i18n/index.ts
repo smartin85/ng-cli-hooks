@@ -1,41 +1,23 @@
-import { ExtendedNormalizedBrowserBuilderSchema } from './../browser';
-import { ExtractI18nBuilder as Original } from '@angular-devkit/build-angular/src/extract-i18n';
-import { Path, resolve, getSystemPath, normalize } from '@angular-devkit/core';
-import { BuilderContext } from '@angular-devkit/architect';
+import { Schema } from '@angular-devkit/build-angular/src/extract-i18n/schema';
+import i18nBuilder from '@angular-devkit/build-angular/src/extract-i18n';
+import { Observable } from 'rxjs';
+import { BuilderContext, createBuilder } from '@angular-devkit/architect';
+import { json } from '@angular-devkit/core';
+import { DevServerBuilderOutput } from '@angular-devkit/build-angular';
+import { modifyOptions } from '../modifiers';
+import { IHookableOptions } from '../IHookable';
 
-export default class DevServerBuilder extends Original {
-	constructor(public context: BuilderContext) {
-		super(context);
-	}
+type ExtractI18nSchema = IHookableOptions & Schema & json.JsonObject;
 
-	buildWebpackConfig(
-		root: Path,
-		projectRoot: Path,
-		options: ExtendedNormalizedBrowserBuilderSchema
-	) {
-		var args = [...arguments];
-		if (options.optionsHook) {
-			const optionsHookPath = getSystemPath(normalize(resolve(root, normalize(options.optionsHook))));
-			const optionsHook = require(optionsHookPath);
-			if (typeof optionsHook === 'function') {
-				args[3] = optionsHook(options) || options;
-			}
-		}
+// export function serveBrowser(
+// 	options: ExtractI18nSchema,
+// 	context: BuilderContext
+//   ): Observable<DevServerBuilderOutput> {
+// 	  return i18nBuilder.handler(
+// 		modifyOptions(options, context), 
+// 		context
+// 	  );
+//   }
 
-		const config = super.buildWebpackConfig.apply(this, args);
-
-		if (options.webpackHook) {
-			const webpackPath = getSystemPath(normalize(resolve(root, normalize(options.webpackHook))));
-			const webpack = require(webpackPath);
-			if (typeof webpack === 'function') {
-				return webpack(config, options);
-			}
-
-			if (typeof webpack === 'object') {
-				return webpack;
-			}
-		}
-
-		return config;
-	}
-}
+  
+//   export default createBuilder<json.JsonObject & ExtractI18nSchema>(serveBrowser);
