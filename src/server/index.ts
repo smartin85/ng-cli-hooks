@@ -1,10 +1,10 @@
 import { ServerBuilder as Original } from '@angular-devkit/build-angular/src/server';
 import { Path, resolve, getSystemPath, normalize } from '@angular-devkit/core';
 import { BuilderContext } from '@angular-devkit/architect';
-import { BuildWebpackServerSchema } from '@angular-devkit/build-angular/src/server/schema';
+import {NormalizedServerBuilderServerSchema} from '@angular-devkit/build-angular/src/server/schema';
 
 
-export interface ExtendedNormalizedServerBuilderSchema extends BuildWebpackServerSchema {
+export interface ExtendedNormalizedServerBuilderSchema extends NormalizedServerBuilderServerSchema {
 	webpackHook: string;
 	optionsHook: string;
 }

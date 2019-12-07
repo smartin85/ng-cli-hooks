@@ -24,7 +24,7 @@ function createModifiedAngularSchema(name) {
 }
 
 function createModifiedIonicSchema(name) {
-	var original = require(`./node_modules/@ionic/ng-toolkit/src/${name}/schema.json`),
+	var original = require(`./node_modules/@ionic/angular-toolkit/builders/cordova-build/schema.json`),
 		modifications = require(`./src/${name}/schema.json`),
 		result = defaultsDeep(original, modifications),
 		dest = `./dist/${name}/schema.json`;

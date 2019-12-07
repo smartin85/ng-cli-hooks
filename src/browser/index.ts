@@ -1,6 +1,7 @@
-import { BrowserBuilder as Original, NormalizedBrowserBuilderSchema } from '@angular-devkit/build-angular/src/browser';
+import { BrowserBuilder as Original } from '@angular-devkit/build-angular/src/browser';
 import { BuilderContext } from '@angular-devkit/architect';
 import { Path, resolve, getSystemPath, normalize } from '@angular-devkit/core';
+import {NormalizedBrowserBuilderSchema} from '@angular-devkit/build-angular';
 
 export interface ExtendedNormalizedBrowserBuilderSchema extends NormalizedBrowserBuilderSchema {
 	webpackHook?: string;
