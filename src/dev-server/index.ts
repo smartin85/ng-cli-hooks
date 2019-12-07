@@ -17,7 +17,7 @@ export function serveBrowser(
 		.pipe(
 			switchMap(targetOptions =>
 				executeDevServerBuilder(
-					modifyOptions(options, context),
+					modifyOptions({...options, ...targetOptions}, context),
 					context,
 					{
 						webpackConfiguration: modifyWebpack(targetOptions, context),
