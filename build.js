@@ -40,6 +40,7 @@ function createModifiedIonicSchema(name) {
 		}		
 	});
 }
-
+console.log('root path:', rootPath);
+console.log('parent', module.parent);
 angularSchemas.forEach(s => createModifiedAngularSchema(s));
 ionicSchemas.forEach(s => createModifiedIonicSchema(s));
