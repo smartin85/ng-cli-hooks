@@ -37,7 +37,7 @@ export function modifyWebpack(options: IHookableOptions, context: BuilderContext
 export function modifyIndexHtml(options: IHookableOptions, context: BuilderContext): IndexHtmlTransform {
 	return async (content: string) => {
 		if(options.indexHtmlHook) {
-			const indexHtmlHookPath = `${getSystemPath(normalize(context.workspaceRoot))}/${options.optionsHook}`;
+			const indexHtmlHookPath = `${getSystemPath(normalize(context.workspaceRoot))}/${options.indexHtmlHook}`;
 			const indexHtmlHook = require(indexHtmlHookPath);
 			if(typeof indexHtmlHook === 'function') {
 				content = await indexHtmlHook(content, options) || content;

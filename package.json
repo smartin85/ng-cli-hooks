@@ -33,7 +33,6 @@
   "homepage": "https://github.com/smartin85/ng-cli-hooks#readme",
   "devDependencies": {
     "@angular-devkit/build-angular": ">=0.801.0",
-    "@ionic/angular-toolkit": "^2.1.1",
     "@types/node": "^10.9.3",
     "typescript": "^3.6.4"
   },

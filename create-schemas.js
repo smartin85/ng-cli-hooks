@@ -6,9 +6,6 @@ var rootPath = process.cwd();
 		'browser',
 		'dev-server',
 		'server'
-	],
-	ionicSchemas = [
-		'cordova-build'
 	];
 
 function createModifiedAngularSchema(name) {
@@ -16,13 +13,6 @@ function createModifiedAngularSchema(name) {
         modifications = require(`./src/${name}/schema.json`);
         
     createSchema(name, original, modifications);		
-}
-
-function createModifiedIonicSchema(name) {
-	const original = require(`@ionic/angular-toolkit/builders/cordova-build/schema.json`),
-		modifications = require(`./src/${name}/schema.json`);
-    
-    createSchema(name, original, modifications);
 }
 
 function createSchema(name, original, modifications) {
@@ -43,4 +33,3 @@ function createSchema(name, original, modifications) {
 }
 
 angularSchemas.forEach(s => createModifiedAngularSchema(s));
-ionicSchemas.forEach(s => createModifiedIonicSchema(s));
