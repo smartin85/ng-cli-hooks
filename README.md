@@ -5,6 +5,10 @@
 
 Hooks for the angular-cli
 
+## This documentation is for version 7 only
+Documentation for other versions could be found here:
+- [Version 8.x.x](https://github.com/smartin85/ng-cli-hooks/blob/8.0.0/README.md)
+
 ## Getting Started
 Install the package:
 ```
