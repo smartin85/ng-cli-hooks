@@ -5,6 +5,10 @@
 
 Hooks for the angular-cli
 
+## This documentation is for version 8 only
+Documentation for other versions could be found here:
+- [Version 7.x.x](https://github.com/smartin85/ng-cli-hooks/blob/7.0.0/README.md)
+
 ## Getting Started
 Install the package:
 ```
@@ -54,6 +58,7 @@ module.exports = function(options) {
 
 ### indexHtmlHook
 This hook modifies the generated index.html at build-time.
+It is only available for the builders `browser` and `dev-server`.
 
 Example: `hooks/index-html.js`
 ```javascript

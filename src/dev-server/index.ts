@@ -17,11 +17,17 @@ export function serveBrowser(
 		.pipe(
 			switchMap(targetOptions =>
 				executeDevServerBuilder(
-					modifyOptions({...options, ...targetOptions}, context),
+					modifyOptions(options, context),
 					context,
 					{
-						webpackConfiguration: modifyWebpack(targetOptions, context),
-						indexHtml: modifyIndexHtml(targetOptions, context)
+						webpackConfiguration: modifyWebpack(
+							modifyOptions(targetOptions, context),
+							context
+						),
+						indexHtml: modifyIndexHtml(
+							modifyOptions(targetOptions, context),
+							context
+						)
 					}
 				)
 			)
