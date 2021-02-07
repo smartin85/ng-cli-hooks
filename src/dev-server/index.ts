@@ -20,14 +20,8 @@ export function serveBrowser(
 					modifyOptions(options, context),
 					context,
 					{
-						webpackConfiguration: modifyWebpack(
-							modifyOptions(targetOptions, context),
-							context
-						),
-						indexHtml: modifyIndexHtml(
-							modifyOptions(targetOptions, context),
-							context
-						)
+						webpackConfiguration: modifyWebpack(targetOptions, context),
+						indexHtml: modifyIndexHtml(targetOptions, context)
 					}
 				)
 			)

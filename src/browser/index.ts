@@ -1,11 +1,9 @@
-import { Schema } from '@angular-devkit/build-angular/src/browser/schema';
-import { Observable } from 'rxjs';
-import { BuilderContext, createBuilder, BuilderOutput } from '@angular-devkit/architect';
+import { BuilderContext, createBuilder } from '@angular-devkit/architect';
 import { json } from '@angular-devkit/core';
-import { executeBrowserBuilder } from '@angular-devkit/build-angular';
+import { executeBrowserBuilder, BrowserBuilderOptions } from '@angular-devkit/build-angular';
 import { modifyOptions, modifyWebpack, modifyIndexHtml } from '../modifiers';
 
-export interface BrowserBuilderSchema extends Schema {
+export interface BrowserBuilderSchema extends BrowserBuilderOptions {
 	webpackHook?: string;
 	indexHtmlHook?: string;
 	optionsHook?: string;
@@ -14,7 +12,7 @@ export interface BrowserBuilderSchema extends Schema {
 export function buildBrowser(
 	options: BrowserBuilderSchema,
 	context: BuilderContext
-  ): Observable<BuilderOutput> {
+  ): ReturnType<typeof executeBrowserBuilder> {
 	return executeBrowserBuilder(
 		modifyOptions(options, context), 
 		context, 

@@ -2,7 +2,7 @@ import { BuilderContext } from "@angular-devkit/architect";
 import { IHookableOptions } from "./IHookable";
 import { getSystemPath, normalize } from "@angular-devkit/core";
 import { ExecutionTransformer } from '@angular-devkit/build-angular';
-import { IndexHtmlTransform } from '@angular-devkit/build-angular/src/angular-cli-files/utilities/index-file/write-index-html';
+import { IndexHtmlTransform } from '@angular-devkit/build-angular/src/utils/index-file/index-html-generator';
 import { Configuration } from 'webpack';
 
 
@@ -17,9 +17,12 @@ export function modifyOptions<T extends IHookableOptions>(options: T, context: B
     return options;
 }
 
-export function modifyWebpack(options: IHookableOptions, context: BuilderContext): ExecutionTransformer<Configuration> {
+export function modifyWebpack(options: IHookableOptions, context: BuilderContext): ExecutionTransformer<Configuration> {	
 	return async (angularWebpackConfig: Configuration) => {
         let webpackConfig: Configuration = angularWebpackConfig;
+		if(options.optionsHook) {
+			options = modifyOptions(options, context);
+		}
         if(options.webpackHook) {
 			const webpackHookPath = `${getSystemPath(normalize(context.workspaceRoot))}/${options.webpackHook}`;
 			const webpackHook = require(webpackHookPath);
@@ -36,6 +39,9 @@ export function modifyWebpack(options: IHookableOptions, context: BuilderContext
 
 export function modifyIndexHtml(options: IHookableOptions, context: BuilderContext): IndexHtmlTransform {
 	return async (content: string) => {
+		if(options.optionsHook) {
+			options = modifyOptions(options, context);
+		}
 		if(options.indexHtmlHook) {
 			const indexHtmlHookPath = `${getSystemPath(normalize(context.workspaceRoot))}/${options.indexHtmlHook}`;
 			const indexHtmlHook = require(indexHtmlHookPath);

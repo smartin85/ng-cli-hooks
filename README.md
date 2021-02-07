@@ -5,8 +5,9 @@
 
 Hooks for the angular-cli
 
-## This documentation is for version 8 only
+## This documentation is for version 11 only
 Documentation for other versions could be found here:
+- [Version 8.x.x](https://github.com/smartin85/ng-cli-hooks/blob/8.0.0/README.md)
 - [Version 7.x.x](https://github.com/smartin85/ng-cli-hooks/blob/7.0.0/README.md)
 
 ## Getting Started
@@ -123,6 +124,8 @@ If `hooks/webpack.js` exports a webpack-config-object, than the generated webpac
 Since version 8.0.0 you don´t need the ng-cli-hooks:cordova-build builder anymore because ionic uses the builder you specified at architect.build or architect.serve. 
 
 ## Changelog
+### 11.0.0
+- Support for Angular 11
 ### 8.0.0
 - Support for Angular 8
 - Removed builders for `extract-i18n` and `cordova-build`
