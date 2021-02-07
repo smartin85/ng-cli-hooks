@@ -1,48 +1,23 @@
-import { ServerBuilder as Original } from '@angular-devkit/build-angular/src/server';
-import { Path, resolve, getSystemPath, normalize } from '@angular-devkit/core';
-import { BuilderContext } from '@angular-devkit/architect';
-import {NormalizedServerBuilderServerSchema} from '@angular-devkit/build-angular/src/server/schema';
+import { Observable } from 'rxjs';
+import { BuilderContext, createBuilder } from '@angular-devkit/architect';
+import { json } from '@angular-devkit/core';
+import { ServerBuilderOptions, executeServerBuilder, ServerBuilderOutput } from '@angular-devkit/build-angular';
+import { modifyOptions, modifyWebpack } from '../modifiers';
+import { IHookableOptions } from '../IHookable';
 
+type ServerSchema = IHookableOptions & ServerBuilderOptions;
 
-export interface ExtendedNormalizedServerBuilderSchema extends NormalizedServerBuilderServerSchema {
-	webpackHook: string;
-	optionsHook: string;
-}
-
-export default class ServerBuilder extends Original {
-	constructor(public context: BuilderContext) {
-		super(context);
-	}
-
-	buildWebpackConfig(
-		root: Path,
-		projectRoot: Path,
-		host: any,
-		options: ExtendedNormalizedServerBuilderSchema
-	) {
-		var args = [...arguments];
-		if (options.optionsHook) {
-			const optionsHookPath = getSystemPath(normalize(resolve(root, normalize(options.optionsHook))));
-			const optionsHook = require(optionsHookPath);
-			if (typeof optionsHook === 'function') {
-				args[3] = optionsHook(options) || options;
-			}
+export function server(
+	options: ServerSchema,
+	context: BuilderContext
+  ): Observable<ServerBuilderOutput> {
+	return executeServerBuilder(
+		modifyOptions(options, context),
+		context,
+		{
+			webpackConfiguration: modifyWebpack(options, context)
 		}
-
-		const config = super.buildWebpackConfig.apply(this, args);
-
-		if (options.webpackHook) {
-			const webpackPath = getSystemPath(normalize(resolve(root, normalize(options.webpackHook))));
-			const webpack = require(webpackPath);
-			if (typeof webpack === 'function') {
-				return webpack(config, options);
-			}
-
-			if (typeof webpack === 'object') {
-				return webpack;
-			}
-		}
-
-		return config;
-	}
-}
+	)
+  }
+  
+  export default createBuilder<json.JsonObject & ServerSchema>(server);

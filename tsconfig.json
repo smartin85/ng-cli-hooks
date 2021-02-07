@@ -1,7 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "declaration": true,
     "module": "commonjs",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "strictNullChecks": true,
+    "target": "es2018",
+    "lib": [
+      "es2018"
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

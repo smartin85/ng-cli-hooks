@@ -1,6 +1,6 @@
 {
   "name": "ng-cli-hooks",
-  "version": "7.0.0",
+  "version": "11.0.0",
   "main": "dist",
   "builders": "builders.json",
   "description": "Hooks for the Angular CLI",
@@ -18,6 +18,10 @@
     "ng",
     "angular",
     "cli",
+    "angular-cli",
+    "builder",
+    "webpack",
+    "options",
     "hook",
     "hooks"
   ],
@@ -28,15 +32,15 @@
   },
   "homepage": "https://github.com/smartin85/ng-cli-hooks#readme",
   "devDependencies": {
-    "@angular-devkit/architect": "^0.12.4",
-    "@angular-devkit/build-angular": "^0.12.4",
-    "@angular-devkit/core": "^7.2.4",
-    "@ionic/angular-toolkit": "^1.4.1",
-    "@types/node": "^10.9.3",
-    "typescript": "^3.0.1"
+    "@types/node": "^14.14.22",
+    "typescript": "^4.1.3",
+    "@angular-devkit/build-angular": ">=0.1100.0 < 0.1200.0"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.20"
+  },
+  "peerDependencies": {
+    "@angular-devkit/build-angular": ">=0.1100.0 < 0.1200.0"
   },
   "files": [
     "dist",

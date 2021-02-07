@@ -5,6 +5,11 @@
 
 Hooks for the angular-cli
 
+## This documentation is for version 11 only
+Documentation for other versions could be found here:
+- [Version 8.x.x](https://github.com/smartin85/ng-cli-hooks/blob/8.0.0/README.md)
+- [Version 7.x.x](https://github.com/smartin85/ng-cli-hooks/blob/7.0.0/README.md)
+
 ## Getting Started
 Install the package:
 ```
@@ -31,11 +36,10 @@ Update your `angular.json` file:
 This Plugin contains hookable builders for
 - browser
 - dev-server
-- extract-i18n
 - server
 
 ## Hooks
-Currently this plugin contains two different hooks: `optionsHook` and `webpackHook`.
+Currently this plugin contains three different hooks: `optionsHook`, `webpackHook` and `indexHtmlHook`.
 
 ### optionsHook
 This hook modifies the options for the builder at build-time.
@@ -53,6 +57,18 @@ module.exports = function(options) {
 }
 ```
 
+### indexHtmlHook
+This hook modifies the generated index.html at build-time.
+It is only available for the builders `browser` and `dev-server`.
+
+Example: `hooks/index-html.js`
+```javascript
+module.exports = function(content, options) {
+    content = content.replace('Ionic App', 'Example App');
+    return content;
+}
+```
+
 ### webpackHook
 This hook can be used to modify the generated webpack-config of angular-cli or to replace it.
 
@@ -60,6 +76,14 @@ This hook can be used to modify the generated webpack-config of angular-cli or t
 Example: `hooks/webpack.js`
 ```javascript
 const StringReplacePlugin = require('string-replace-webpack-plugin');
+const {AngularCompilerPlugin} = require('@ngtools/webpack/src/angular_compiler_plugin');
+
+function replaceAngularCompilerPlugin(plugins) {
+  const index = plugins.findIndex(p => p instanceof AngularCompilerPlugin);
+  const options = plugins[index]._options;
+  options.directTemplateLoading = false;
+  plugins[index] = new AngularCompilerPlugin(options);
+}
 
 module.exports = function (generatedWebpackConfig, options) {
   generatedWebpackConfig.module.rules.push({
@@ -75,6 +99,20 @@ module.exports = function (generatedWebpackConfig, options) {
       ]
     })
   });
+
+  /**
+   * The webpack-config of Angular 8 does not have a loader for html.
+   * It uses directTemplateloading. To modify the html content we have
+   * to replace the AngularComplilerPlugin with directTemplateLoading
+   * set to false.
+  */
+  generatedWebpackConfig.module.rules.unshift({
+    test: /\.html$/,
+    loader: 'raw-loader'
+  });
+
+  replaceAngularCompilerPlugin(generatedWebpackConfig.plugins);
+
   return generatedWebpackConfig;
 }
 ```
@@ -83,9 +121,16 @@ module.exports = function (generatedWebpackConfig, options) {
 If `hooks/webpack.js` exports a webpack-config-object, than the generated webpack-config will be replaced by your own.
 
 ## Ionic 4
-The ionic-cli uses hardcoded the `BrowserBuilder` from Angular for the `cordova-build`. This made it impossible to use `ng-cli-hooks` for the cordova-build. To force Ionic to use `ng-cli-hooks` we can replace `@ionic/ng-toolkit:cordova-build` with `ng-cli-hooks:cordova-build` in the `angular.json` file.
+Since version 8.0.0 you don´t need the ng-cli-hooks:cordova-build builder anymore because ionic uses the builder you specified at architect.build or architect.serve. 
 
 ## Changelog
+### 11.0.0
+- Support for Angular 11
+### 8.0.0
+- Support for Angular 8
+- Removed builders for `extract-i18n` and `cordova-build`
+- Added `indexHtmlHook` to hook into the index.html build.
+
 ### 7.0.0
 - Major version of ng-cli-hooks now equals the Angular version (use ng-cli-hooks@7.x.x to work with Angular 7.x.x)
 
