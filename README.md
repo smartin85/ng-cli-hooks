@@ -3,6 +3,8 @@
 [![npm version][npm-image]][npm-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 
+[![Buy me a coffee][buy-me-a-coffee-image]][buy-me-a-coffee-url]
+
 Hooks for the angular-cli
 
 ## This documentation is for version 11 only
@@ -145,3 +147,6 @@ Since version 8.0.0 you don´t need the ng-cli-hooks:cordova-build builder anymo
 
 [snyk-image]: https://snyk.io/test/github/smartin85/ng-cli-hooks/badge.svg
 [snyk-url]: https://snyk.io/test/github/smartin85/ng-cli-hooks
+
+[buy-me-a-coffee-image]: https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png
+[buy-me-a-coffee-url]: https://www.buymeacoffee.com/smartin
