@@ -1,6 +1,7 @@
 # ng-cli-hooks
 [![MIT License][license-image]][license-url] 
 [![npm version][npm-image]][npm-url]
+[![npm downloads][downloads-image]][npm-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 
 [![Buy me a coffee][buy-me-a-coffee-image]][buy-me-a-coffee-url]
@@ -143,7 +144,9 @@ Since version 8.0.0 you don´t need the ng-cli-hooks:cordova-build builder anymo
 [license-url]: LICENSE
 
 [npm-image]: https://badge.fury.io/js/ng-cli-hooks.svg
-[npm-url]: https://badge.fury.io/js/ng-cli-hooks
+[npm-url]: https://www.npmjs.com/package/ng-cli-hooks
+
+[downloads-image]: https://img.shields.io/npm/dt/ng-cli-hooks.svg
 
 [snyk-image]: https://snyk.io/test/github/smartin85/ng-cli-hooks/badge.svg
 [snyk-url]: https://snyk.io/test/github/smartin85/ng-cli-hooks
