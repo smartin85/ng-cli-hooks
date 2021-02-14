@@ -1,6 +1,6 @@
 {
   "name": "ng-cli-hooks",
-  "version": "11.0.0",
+  "version": "11.0.1",
   "main": "dist",
   "builders": "builders.json",
   "description": "Hooks for the Angular CLI",

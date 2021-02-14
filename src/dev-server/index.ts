@@ -13,6 +13,11 @@ export function serveBrowser(
 	options: DevServerSchema,
 	context: BuilderContext
 ): Observable<DevServerBuilderOutput> {
+	const originalGetTargetOption = context.getTargetOptions;
+	context.getTargetOptions = async (target) => {
+		const opts = await originalGetTargetOption(target);
+		return modifyOptions(opts, context);
+	}
 	return from(getTargetOptions(options, context))
 		.pipe(
 			switchMap(targetOptions =>
