@@ -9,8 +9,14 @@ var rootPath = process.cwd();
 	];
 
 function createModifiedAngularSchema(name) {
-    const original = require(`@angular-devkit/build-angular/src/${name}/schema.json`),
-        modifications = require(`./src/${name}/schema.json`);
+    let original = {};
+    try {
+        original = require(`@angular-devkit/build-angular/src/builders/${name}/schema.json`);
+    }
+    catch(e) {
+        original = require(`@angular-devkit/build-angular/src/${name}/schema.json`)
+    }
+    const modifications = require(`./src/${name}/schema.json`);
         
     createSchema(name, original, modifications);		
 }

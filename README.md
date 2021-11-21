@@ -121,6 +121,8 @@ If `hooks/webpack.js` exports a webpack-config-object, than the generated webpac
 Since version 8.0.0 you don´t need the ng-cli-hooks:cordova-build builder anymore because ionic uses the builder you specified at architect.build or architect.serve. 
 
 ## Changelog
+### 13.0.0
+- Support for Angular 13
 ### 12.0.0
 - Support for Angular 12
 ### 11.0.0
