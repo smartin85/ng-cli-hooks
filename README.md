@@ -8,8 +8,12 @@
 
 Hooks for the angular-cli
 
-## This documentation is for version 12 only
+> Unfortunately I don't have much time to take care of this project, so please contribute when new versions of Angular are released.
+> As an alternative to this package, I recommend taking a look at the [angular-builders](https://github.com/just-jeb/angular-builders) repo. They are much faster when new Angular versions are released.
+
+## This documentation is for version 15 only
 Documentation for other versions could be found here:
+- [Version 13.x.x](https://github.com/smartin85/ng-cli-hooks/blob/13.0.0/README.md)
 - [Version 11.x.x](https://github.com/smartin85/ng-cli-hooks/blob/11.0.0/README.md)
 - [Version 8.x.x](https://github.com/smartin85/ng-cli-hooks/blob/8.0.0/README.md)
 - [Version 7.x.x](https://github.com/smartin85/ng-cli-hooks/blob/7.0.0/README.md)
@@ -84,6 +88,8 @@ module.exports = function(content, options) {
 This hook can be used to modify the generated webpack-config of angular-cli or to replace it.
 
 #### Modify the generated webpack-config
+During the development of this hook it may be necessary to clear the Angular cache.
+
 Example: `hooks/webpack.js`
 ```javascript
 function replaceAngularCompilerPlugin(plugins) {
@@ -103,11 +109,6 @@ module.exports = function (generatedWebpackConfig, options) {
     }
   });
 
-  generatedWebpackConfig.module.rules.unshift({
-    test: /\.html$/,
-    loader: 'raw-loader'
-  });
-
   replaceAngularCompilerPlugin(generatedWebpackConfig.plugins);
 
   return generatedWebpackConfig;
@@ -117,10 +118,9 @@ module.exports = function (generatedWebpackConfig, options) {
 #### Replace the generated webpack-config
 If `hooks/webpack.js` exports a webpack-config-object, than the generated webpack-config will be replaced by your own.
 
-## Ionic 4
-Since version 8.0.0 you don´t need the ng-cli-hooks:cordova-build builder anymore because ionic uses the builder you specified at architect.build or architect.serve. 
-
 ## Changelog
+### 15.0.0
+- Support for Angular 15
 ### 13.0.0
 - Support for Angular 13
 ### 12.0.0
