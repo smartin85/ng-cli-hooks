@@ -1,6 +1,6 @@
 {
   "name": "ng-cli-hooks",
-  "version": "15.0.1",
+  "version": "16.0.0",
   "main": "dist",
   "builders": "builders.json",
   "description": "Hooks for the Angular CLI",
@@ -32,16 +32,16 @@
   },
   "homepage": "https://github.com/smartin85/ng-cli-hooks#readme",
   "devDependencies": {
-    "@angular-devkit/build-angular": "^15.0.0",
+    "@angular-devkit/build-angular": "^16.1.1",
     "@types/node": "16.18.36",
     "rimraf": "5.0.1",
-    "typescript": "~4.9.3"
+    "typescript": "~5.1.3"
   },
   "dependencies": {
     "lodash": "^4.17.20"
   },
   "peerDependencies": {
-    "@angular-devkit/build-angular": "^15.2.8"
+    "@angular-devkit/build-angular": "^16.1.1"
   },
   "files": [
     "dist",

@@ -11,8 +11,9 @@ Hooks for the angular-cli
 > Unfortunately I don't have much time to take care of this project, so please contribute when new versions of Angular are released.
 > As an alternative to this package, I recommend taking a look at the [angular-builders](https://github.com/just-jeb/angular-builders) repo. They are much faster when new Angular versions are released.
 
-## This documentation is for version 15 only
+## This documentation is for version 16 only
 Documentation for other versions could be found here:
+- [Version 15.x.x](https://github.com/smartin85/ng-cli-hooks/blob/15.0.0/README.md)
 - [Version 13.x.x](https://github.com/smartin85/ng-cli-hooks/blob/13.0.0/README.md)
 - [Version 11.x.x](https://github.com/smartin85/ng-cli-hooks/blob/11.0.0/README.md)
 - [Version 8.x.x](https://github.com/smartin85/ng-cli-hooks/blob/8.0.0/README.md)
@@ -119,6 +120,8 @@ module.exports = function (generatedWebpackConfig, options) {
 If `hooks/webpack.js` exports a webpack-config-object, than the generated webpack-config will be replaced by your own.
 
 ## Changelog
+### 16.0.0
+- Support for Angular 16
 ### 15.0.0
 - Support for Angular 15
 ### 13.0.0
